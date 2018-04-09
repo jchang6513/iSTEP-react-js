@@ -97,7 +97,7 @@ class App extends React.Component {
                 <div className='row'>
                     <div className='col-lg-1 col-md-12 col-sm-12'></div>
                     <div className='col-lg-4 col-md-6 col-sm-12 mb-3'>
-                        <select class="form-control ml-3 col-10 mb-4" onChange={this.change} value={this.state.frames}>
+                        <select className="form-control ml-3 col-10 mb-4" onChange={this.change} value={this.state.frames}>
                             <option value='Single'>Single</option>
                             <option value='Animate'>Animate</option>
                         </select>
@@ -136,8 +136,8 @@ class App extends React.Component {
                             maxDate={moment().add(1, 'hours')}
                         />
                     </div>
-                    <div className='col-lg-6 col-md-5 col-sm-12 ml-md-3'>
-                        <img id="trim" src={this.state.urls[this.state.iurl]} alt=""></img>
+                    <div id="trim-div" className='col-lg-6 col-md-5 col-sm-12 ml-md-3'>
+                        <img id="trim-img" src={this.state.urls[this.state.iurl]} alt=""></img>
                     </div>
                 </div>                
             </div>
