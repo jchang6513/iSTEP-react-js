@@ -2,11 +2,11 @@
   "name": "trim_formpage",
   "version": "1.0.0",
   "description": "create a trim form page for history image",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src/ --inline --hot",
-    "build:prod": "webpack -p && cp src\\index.html dist\\index.html"
+    "build": "webpack -d && copy src\\trim.html dist\\trim.html && webpack-dev-server --content-base src/ --inline --hot",
+    "build:prod": "webpack -p && copy src\\index.html dist\\index.html"
   },
   "author": "Yi-Wei Chang",
   "license": "MIT",

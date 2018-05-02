@@ -19,7 +19,8 @@ class App extends React.Component {
             endDate: moment().subtract(2+moment().utcOffset()/60,'hours').startOf('hour'),
             urls: [this.getURL(moment().subtract(3+moment().utcOffset()/60,'hours').startOf('hour'))],
             iurl: 0,
-            frames: 'Single'
+            frames: 'Single',
+            update: moment().subtract(3,'hours').startOf('hour').toISOString().replace('T',' ').substr(0,16)
         };
         this.handleChangeStart = this.handleChangeStart.bind(this);
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -87,21 +88,19 @@ class App extends React.Component {
             urls: Images,
             iurl: 0
         })
-//        console.log(Images)
     }
     
-    render () {        
-//        console.log(this.state.iurl,Math.floor(Date.now()/1000),this.state.urls.length)
+    render () {
         return (
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-1 col-md-12 col-sm-12'></div>
-                    <div className='col-lg-4 col-md-6 col-sm-12 mb-3'>
-                        <select className="form-control ml-3 col-10 mb-4" onChange={this.change} value={this.state.frames}>
+                    <div className='col-lg-4 col-md-6 col-sm-12 mb-4 ml-4'>
+                        <select className="form-control col-10 mb-4" onChange={this.change} value={this.state.frames}>
                             <option value='Single'>Single</option>
                             <option value='Animate'>Animate</option>
                         </select>
-                        <h4 className="ml-4">FROM:</h4>
+                        <h4>FROM:</h4>
                         <DatePicker
                             customInput={<DatePickerCustom />}
                             selected={this.state.startDate}
@@ -118,7 +117,7 @@ class App extends React.Component {
                             minDate={moment("2017-07-27T00:00:00+0800")}
                             maxDate={moment().add(1, 'hours')}
                         />                                
-                        <h4 className="ml-4">TO:</h4>
+                        <h4 >TO:</h4>
                         <DatePicker
                             customInput={<DatePickerCustom />}
                             selected={this.state.endDate}
@@ -136,8 +135,9 @@ class App extends React.Component {
                             maxDate={moment().add(1, 'hours')}
                         />
                     </div>
-                    <div id="trim-div" className='col-lg-6 col-md-5 col-sm-12 ml-md-3'>
+                    <div id="trim-div" className='col-lg-6 col-md-5 col-sm-12 ml-md-3 text-right'>
                         <img id="trim-img" src={this.state.urls[this.state.iurl]} alt=""></img>
+                        <p className="mt-3 mr-4">Updated {this.state.update}</p>
                     </div>
                 </div>                
             </div>
@@ -148,7 +148,7 @@ class App extends React.Component {
 class DatePickerCustom extends React.Component {
   render () {
     return (
-      <button className="btn btn-basic btn-md ml-4 mb-2" onClick={this.props.onClick}>
+      <button className="btn btn-outline-primary btn-md mb-2" onClick={this.props.onClick}>
         {this.props.value}
       </button>
     )

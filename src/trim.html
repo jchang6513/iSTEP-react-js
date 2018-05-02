@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <title> Integrated Study and Test for Earthquake Precursors - 地震前兆計畫 - iSTEP </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="iSTEP4"/>
+        <meta property="og:title" content="iSTEP4-TRIM"/>
         <meta property="og:image" content="http://www.ss.ncu.edu.tw/~istep/images/istep_h_b.png"/>
         <meta property="og:description" content="Integrated Study and Test for Earthquake Precursors"/>    
-        <meta name="Description" content="Integrated Study and Test for Earthquake Precursors" />
-        <meta property="og:description" content="地震前兆計畫"/>
+        <meta name="Description" content="Taiwan Regional Ionosphere Maps" />
+        <meta property="og:description" content="台灣區域電離層圖"/>
         <meta property="og:url" content="http://www.ss.ncu.edu.tw/~istep"/>
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="iSTEP" />    
+        <meta property="og:site_name" content="iSTEP-TRIM" />    
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/hamburgers.css">
@@ -24,7 +24,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" ></script>
-        <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>            
+        <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>          
+        <style>        
+            #trim-div {
+                min-height: 75vh;
+                width: auto;
+            }
+
+            #trim-img {
+                max-height: 90vh;
+                max-width: 100%;
+                width: auto;
+                height: auto;
+            }
+        </style>
     </head>
 
     <body>
@@ -64,7 +77,7 @@
             </div>
                         
             <div id='app'></div>
-            <script src='app/bundle.js'></script>
+            <script src='app/trim.js'></script>
 
             <footer class="footer bg-faded">
                 <div class="container text-center">

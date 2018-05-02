@@ -119,18 +119,6 @@ p {
     font-size: 80%;
 }
 
-#trim-div {
-    min-height: 75vh;
-    width: auto;
-}
-
-#trim-img {
-    max-height: 90vh;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-}
-
 .footer {
     margin-top: 20px;
     padding-bottom: 20px;
