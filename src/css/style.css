@@ -17,8 +17,8 @@ html, body {
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 
 h4 {
@@ -32,8 +32,12 @@ p {
     line-height: 1.8;
 }
 
+.d-block {
+  width: 100%;
+}
+
 .navbar-side {
-    position: fixed;  
+    position: fixed;
     font-family: "GudeaR";
     top: 0;
     bottom: 0;
@@ -43,7 +47,7 @@ p {
     padding-top: 10px;
     overflow-y: scroll;
     z-index: 100;
-}    
+}
 
 .navbar-side .nav-link{
     font-size: 120%;
@@ -82,7 +86,7 @@ p {
 #header {
     background: linear-gradient(rgba( 255,255,255, 0.6),rgba( 255,255,255, 0.6)), url(../images/banner_1.png) no-repeat center;
     background-size: cover;
-    font-family: "NEO";    
+    font-family: "NEO";
     position: absolute;
     top: 0px;
     height: 250px;
@@ -139,25 +143,19 @@ p {
 
 @media only screen and (max-width: 750px) {
     h3 {
-        font-size: 120%;    
+        font-size: 120%;
     }
-    
+
     h4 {
         font-size: 100%;
         line-height: 2;
     }
-    
+
     p {
         font-size: 80%;
         line-height: 1.8;
     }
 
-    #hairline {
-        height: 65px;
-        border-bottom: solid;
-        border-width: 0.5px;
-        margin-bottom: 10px;
-    }
 
     #hairline #logo {
         position: absolute;
@@ -165,30 +163,30 @@ p {
         height: 20px;
         left: 50%;
         transform: translateX(-50%);
-    }    
-    
+    }
+
     #istep {
         width: 100%;
-    }    
-    
+    }
+
     .main-content {
-        padding-top: 170px;    
+        padding-top: 170px;
     }
 
     #header {
         height: 150px;
     }
-    
+
     #title {
         font-size: 170%;
     }
-    
+
     #pub p {
         font-size: 50%;
     }
-    
+
     .footer {
         font-size: 60%;
     }
-    
+
 }

@@ -4,7 +4,7 @@
   "description": "a light-box feature on the index of istep",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
+    "start": "npm run dev",
     "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src/ --inline --hot",
     "build:prod": "webpack -p && copy src\\index.html dist\\index.html",
     "dev": "webpack-dev-server --content-base src/ --inline --hot"
