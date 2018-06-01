@@ -1,0 +1,194 @@
+@font-face {
+    font-family: NEO;
+    src: url(../font/NEOTERICcBOLD.ttf);
+}
+
+@font-face {
+    font-family: SafetyM;
+    src: url(../font/SafetyMedium.otf);
+}
+
+@font-face {
+    font-family: GudeaR;
+    src: url(../font/Gudea-Regular.ttf);
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+h4 {
+    font-family: "GudeaR";
+    font-size: 120%;
+    line-height: 2;
+}
+
+p {
+    font-size: 105%;
+    line-height: 1.8;
+}
+
+.navbar-side {
+    position: fixed;  
+    font-family: "GudeaR";
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    width: 200px;
+    left: -200px;
+    padding-top: 10px;
+    overflow-y: scroll;
+    z-index: 100;
+}    
+
+.navbar-side .nav-link{
+    font-size: 120%;
+    padding-bottom: 15px;
+}
+
+.dropdown-menu {
+    border: none;
+}
+
+.main-content {
+    position: absolute;
+    width: 100%;
+    padding-top: 280px;
+}
+
+#home-page {
+    padding-top: 0px;
+}
+
+#logo {
+
+}
+
+#istep {
+    width: 80%;
+}
+
+#navbar-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+#header {
+    background: linear-gradient(rgba( 255,255,255, 0.6),rgba( 255,255,255, 0.6)), url(../images/banner_1.png) no-repeat center;
+    background-size: cover;
+    font-family: "NEO";    
+    position: absolute;
+    top: 0px;
+    height: 250px;
+    width: 100%;
+}
+
+#hairline {
+    height: 65px;
+    border-bottom: solid;
+    border-width: 0.5px;
+    margin-bottom: 10px;
+}
+
+#hairline #logo {
+    position: absolute;
+    top: 5px;
+    height: 25px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#title {
+    position: absolute;
+    font-size: 350%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+#pub p {
+    font-size: 80%;
+}
+
+#trim-div {
+    min-height: 75vh;
+    width: auto;
+}
+
+#trim-img {
+    max-height: 90vh;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.footer {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 750px) {
+    h3 {
+        font-size: 120%;    
+    }
+    
+    h4 {
+        font-size: 100%;
+        line-height: 2;
+    }
+    
+    p {
+        font-size: 80%;
+        line-height: 1.8;
+    }
+
+    #hairline {
+        height: 65px;
+        border-bottom: solid;
+        border-width: 0.5px;
+        margin-bottom: 10px;
+    }
+
+    #hairline #logo {
+        position: absolute;
+        top: 8px;
+        height: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }    
+    
+    #istep {
+        width: 100%;
+    }    
+    
+    .main-content {
+        padding-top: 170px;    
+    }
+
+    #header {
+        height: 150px;
+    }
+    
+    #title {
+        font-size: 170%;
+    }
+    
+    #pub p {
+        font-size: 50%;
+    }
+    
+    .footer {
+        font-size: 60%;
+    }
+    
+}
