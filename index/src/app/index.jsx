@@ -8,12 +8,12 @@ class App extends React.Component {
     constructor () {
         super();
         this.state = {
-          Slide1: 'http://localhost:8080/images/Slide1.PNG',
-          Slide2: 'http://localhost:8080/images/Slide2.PNG',
-          Slide3: 'http://localhost:8080/images/Slide3.PNG',
-          Slide4: 'http://localhost:8080/images/Slide4.PNG',
-          Slide5: 'http://localhost:8080/images/Slide5.PNG',
-          Slide6: 'http://localhost:8080/images/Slide6.PNG',
+          Slide1: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide1.PNG',
+          Slide2: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide2.PNG',
+          Slide3: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide3.PNG',
+          Slide4: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide4.PNG',
+          Slide5: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide5.PNG',
+          Slide6: 'http://www2.ss.ncu.edu.tw/~istep/images/Slide6.PNG',
         };
     }
 
@@ -55,7 +55,7 @@ class App extends React.Component {
 
         var url='http://irsl.ss.ncu.edu.tw/media/product/Doppler/';
         url += date.format('YYYY/MM/')
-        url += 'DOP'+date.format('YYYYMMDD.HH')+'.png';
+        url += 'DOP'+date.format('YYYYMMDD')+'.png';
         return url;
     }
 
@@ -66,7 +66,8 @@ class App extends React.Component {
                     <Tile
                         img={this.state.Slide1}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
-                        delay={5}
+                        delay={5.5}
+                        subType={'hours'}
                         getURL={this.getPRE}
                         imagePadding={70}
                         imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/pre.html'>http://www.ss.ncu.edu.tw/~istep/pre.html</a></p>}
@@ -74,7 +75,8 @@ class App extends React.Component {
                     <Tile
                         img={this.state.Slide2}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
-                        delay={5}
+                        delay={5.5}
+                        subType={'hours'}
                         getURL={this.getTWRG}
                         imagePadding={70}
                         imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/tgim.html'>http://www.ss.ncu.edu.tw/~istep/tgim.html</a></p>}
@@ -82,15 +84,17 @@ class App extends React.Component {
                     <Tile
                         img={this.state.Slide3}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
-                        delay={3}
+                        delay={3.5}
+                        subType={'hours'}
                         getURL={this.getTWRR}
                         imagePadding={70}
                         imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/trim.html'>http://www.ss.ncu.edu.tw/~istep/trim.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide4}
-                        beginDate={moment("2017010100", "YYYYMMDDHH")}
+                        beginDate={moment("20170101", "YYYYMMDD")}
                         delay={-5}
+                        subType={'days'}
                         getURL={this.getDOP}
                         imagePadding={70}
                         imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/dop.html'>http://www.ss.ncu.edu.tw/~istep/dop.html</a></p>}

@@ -17,7 +17,7 @@ export class Tile extends React.Component {
             mainSrc: moment().subtract(moment().utcOffset()/60,'hours').startOf('hour'),
             nextSrc: moment().subtract(moment().utcOffset()/60,'hours').startOf('hour'),
             prevSrc: moment().subtract(moment().utcOffset()/60,'hours').startOf('hour'),
-            currentHour: 0,
+            diffTime: 0,
             isOpen: false,
         };
     }
@@ -26,7 +26,7 @@ export class Tile extends React.Component {
         this.setSrc(0)
         this.setState({
             beginDate: this.props.beginDate,
-            currentDate: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').startOf('hour'),
+            currentDate: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').startOf(this.props.subType),
         });
     }
 
@@ -43,21 +43,21 @@ export class Tile extends React.Component {
   	}
 
   	gotoPrevious = () => {
-        const currentHour = (this.state.prevSrc.isBefore(this.state.beginDate)) ? 0 : this.state.currentHour+1
-    		this.setSrc(currentHour)
+        const diffTime = (this.state.prevSrc.isBefore(this.state.beginDate)) ? 0 : this.state.diffTime+1
+    		this.setSrc(diffTime)
   	}
 
   	gotoNext = () => {
-        const currentHour = (this.state.nextSrc.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'hours') : this.state.currentHour-1
-    		this.setSrc(currentHour)
+        const diffTime = (this.state.nextSrc.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,this.props.subType) : this.state.diffTime-1
+    		this.setSrc(diffTime)
   	}
 
-    setSrc = (currentHour) => {
+    setSrc = (diffTime) => {
         this.setState({
-            mainSrc: moment().subtract(this.props.delay+currentHour+moment().utcOffset()/60,'hours').startOf('hour'),
-            nextSrc: moment().subtract(this.props.delay-1+currentHour+moment().utcOffset()/60,'hours').startOf('hour'),
-            prevSrc: moment().subtract(this.props.delay+1+currentHour+moment().utcOffset()/60,'hours').startOf('hour'),
-            currentHour: currentHour
+            mainSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
+            nextSrc: moment().subtract(this.props.delay-1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
+            prevSrc: moment().subtract(this.props.delay+1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
+            diffTime: diffTime
         });
     }
     render() {
