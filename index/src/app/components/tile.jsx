@@ -48,15 +48,15 @@ export class Tile extends React.Component {
   	}
 
   	gotoNext = () => {
-        const diffTime = (this.state.nextSrc.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,this.props.subType) : this.state.diffTime-1
+        const diffTime = (this.state.nextSrc.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,this.props.diffType) : this.state.diffTime-1
     		this.setSrc(diffTime)
   	}
 
     setSrc = (diffTime) => {
         this.setState({
-            mainSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
-            nextSrc: moment().subtract(this.props.delay-1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
-            prevSrc: moment().subtract(this.props.delay+1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.subType).startOf('hour'),
+            mainSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
+            nextSrc: moment().subtract(this.props.delay-1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
+            prevSrc: moment().subtract(this.props.delay+1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
             diffTime: diffTime
         });
     }

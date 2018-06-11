@@ -67,45 +67,45 @@ class App extends React.Component {
                         img={this.state.Slide1}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
                         delay={5.5}
-                        subType={'hours'}
+                        diffType={'hours'}
                         getURL={this.getPRE}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/pre.html'>http://www.ss.ncu.edu.tw/~istep/pre.html</a></p>}
+                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/pre.html'>http://www2.ss.ncu.edu.tw/~istep/pre.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide2}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
                         delay={5.5}
-                        subType={'hours'}
+                        diffType={'hours'}
                         getURL={this.getTWRG}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/tgim.html'>http://www.ss.ncu.edu.tw/~istep/tgim.html</a></p>}
+                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/tgim.html'>http://www2.ss.ncu.edu.tw/~istep/tgim.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide3}
                         beginDate={moment("2018010100", "YYYYMMDDHH")}
-                        delay={3.5}
-                        subType={'hours'}
+                        delay={2}
+                        diffType={'hours'}
                         getURL={this.getTWRR}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/trim.html'>http://www.ss.ncu.edu.tw/~istep/trim.html</a></p>}
+                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/trim.html'>http://www2.ss.ncu.edu.tw/~istep/trim.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide4}
                         beginDate={moment("20170101", "YYYYMMDD")}
-                        delay={-5}
-                        subType={'days'}
+                        delay={-4.5}
+                        diffType={'days'}
                         getURL={this.getDOP}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www.ss.ncu.edu.tw/~istep/dop.html'>http://www.ss.ncu.edu.tw/~istep/dop.html</a></p>}
+                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/dop.html'>http://www2.ss.ncu.edu.tw/~istep/dop.html</a></p>}
                     />
                     <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
-                        <a href="qf.html">
+                        <a href="http://www2.ss.ncu.edu.tw/~istep/qf.html">
                             <img className="d-block" src={this.state.Slide5}/>
                         </a>
                     </div>
                     <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
-                        <a href="inf.html">
+                        <a href="http://www2.ss.ncu.edu.tw/~istep/inf.html">
                             <img className="d-block" src={this.state.Slide6}/>
                         </a>
                     </div>
