@@ -26,7 +26,7 @@ export class Tile extends React.Component {
         this.setSrc(0)
         this.setState({
             beginDate: this.props.beginDate,
-            currentDate: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').startOf('hour'),
+            currentDate: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').startOf(this.props.subType),
         });
     }
 

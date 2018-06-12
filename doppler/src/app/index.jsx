@@ -16,13 +16,13 @@ class App extends React.Component {
     constructor () {
         super();
         this.state = {
-            beginDate: moment("2017010100", "YYYYMMDDHH"),
-            currentDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
+            beginDate: moment("20170101", "YYYYMMDD"),
+            currentDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('day'),
             thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/Doppler/real_dop.png',
-            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
-            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').startOf('hour'),
-            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').startOf('hour'),
-            mainHour: 0,
+            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('day'),
+            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').startOf('day'),
+            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').startOf('day'),
+            diffDay: 0,
             isOpen: false,
 
         };
@@ -35,35 +35,35 @@ class App extends React.Component {
   	}
 
     handleChange = (date) => {
-        const Hour = this.state.currentDate.diff(date,'hours')
-        this.setSrc(Hour)
+        const Day = this.state.currentDate.diff(date,'hours')
+        this.setSrc(Day)
     }
 
     gotoPrevious = () => {
-        const Hour = (this.state.prevDate.isBefore(this.state.beginDate)) ? 0 : this.state.mainHour+1
-    		this.setSrc(Hour)
+        const Day = (this.state.prevDate.isBefore(this.state.beginDate)) ? 0 : this.state.diffDay+1
+    		this.setSrc(Day)
   	}
 
   	gotoNext = () => {
-        const Hour = (this.state.nextDate.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'hours') : this.state.mainHour-1
-    		this.setSrc(Hour)
+        const Day = (this.state.nextDate.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'days') : this.state.diffDay-1
+    		this.setSrc(Day)
   	}
 
     getDOP = (date) => {
         var start = new Date(date._d.getFullYear(), 0, 0);
         var url='http://irsl.ss.ncu.edu.tw/media/product/Doppler/';
         url += date.format('YYYY/MM/')
-        url += 'DOP'+date.format('YYYYMMDD.HH')+'.png';
+        url += 'DOP'+date.format('YYYYMMDD')+'.png';
         return url;
     }
 
-    setSrc = (Hour) => {
+    setSrc = (Day) => {
         this.setState({
-            mainDate: moment().subtract(-5+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            nextDate: moment().subtract(-6+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            prevDate: moment().subtract(-4+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            thumbnail: this.getDOP(moment().subtract(-5+Hour+moment().utcOffset()/60,'hours').startOf('hour')),
-            mainHour: Hour
+            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(Day,'days').startOf('hour'),
+            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').subtract(Day,'days').startOf('hour'),
+            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').subtract(Day,'days').startOf('hour'),
+            thumbnail: this.getDOP(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(Day,'days').startOf('hour')),
+            diffDay: Day
         });
     }
 
