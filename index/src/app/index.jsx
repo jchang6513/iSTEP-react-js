@@ -92,7 +92,7 @@ class App extends React.Component {
                     />
                     <Tile
                         img={this.state.Slide4}
-                        beginDate={moment("20170101", "YYYYMMDD")}
+                        beginDate={moment("2017010100", "YYYYMMDDHH")}
                         delay={-4.5}
                         diffType={'days'}
                         getURL={this.getDOP}
