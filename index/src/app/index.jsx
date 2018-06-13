@@ -59,6 +59,15 @@ class App extends React.Component {
         return url;
     }
 
+    getMAG = (date) => {
+        var start = new Date(date._d.getFullYear(), 0, 0);
+
+        var url='http://irsl.ss.ncu.edu.tw/media/product/QuakeFinder/';
+        url += date.format('YYYY/MM/')
+        url += 'QFMAG'+date.format('YYYYMMDD')+'.png';
+        return url;
+    }
+
     render () {
         return (
             <div className="container-fluid">
@@ -92,18 +101,22 @@ class App extends React.Component {
                     />
                     <Tile
                         img={this.state.Slide4}
-                        beginDate={moment("2017010100", "YYYYMMDDHH")}
+                        beginDate={moment("20170101", "YYYYMMDD")}
                         delay={-4.5}
                         diffType={'days'}
                         getURL={this.getDOP}
                         imagePadding={70}
                         imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/dop.html'>http://www2.ss.ncu.edu.tw/~istep/dop.html</a></p>}
                     />
-                    <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
-                        <a href="http://www2.ss.ncu.edu.tw/~istep/qf.html">
-                            <img className="d-block" src={this.state.Slide5}/>
-                        </a>
-                    </div>
+                    <Tile
+                        img={this.state.Slide5}
+                        beginDate={moment("20180101", "YYYYMMDD")}
+                        delay={30}
+                        diffType={'days'}
+                        getURL={this.getMAG}
+                        imagePadding={70}
+                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/qf.html'>http://www2.ss.ncu.edu.tw/~istep/qf.html</a></p>}
+                    />
                     <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
                         <a href="http://www2.ss.ncu.edu.tw/~istep/inf.html">
                             <img className="d-block" src={this.state.Slide6}/>

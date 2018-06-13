@@ -22,7 +22,7 @@ class App extends React.Component {
             mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
             nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').startOf('hour'),
             prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').startOf('hour'),
-            mainHour: 0,
+            diffTime: 0,
             isOpen: false,
 
         };
@@ -35,35 +35,36 @@ class App extends React.Component {
   	}
 
     handleChange = (date) => {
-        const Hour = this.state.currentDate.diff(date,'hours')
-        this.setSrc(Hour)
+        const diffTime = this.state.currentDate.diff(date,'days')
+        this.setSrc(diffTime)
     }
 
     gotoPrevious = () => {
-        const Hour = (this.state.prevDate.isBefore(this.state.beginDate)) ? 0 : this.state.mainHour+1
-    		this.setSrc(Hour)
+        const diffTime = (this.state.prevDate.isBefore(this.state.beginDate)) ? 0 : this.state.diffTime+1
+    		this.setSrc(diffTime)
   	}
 
   	gotoNext = () => {
-        const Hour = (this.state.nextDate.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'hours') : this.state.mainHour-1
-    		this.setSrc(Hour)
+        const diffTime = (this.state.nextDate.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'days') : this.state.diffTime-1
+    		this.setSrc(diffTime)
   	}
 
     getDOP = (date) => {
         var start = new Date(date._d.getFullYear(), 0, 0);
+
         var url='http://irsl.ss.ncu.edu.tw/media/product/Doppler/';
         url += date.format('YYYY/MM/')
-        url += 'DOP'+date.format('YYYYMMDD.HH')+'.png';
+        url += 'DOP'+date.format('YYYYMMDD')+'.png';
         return url;
     }
 
-    setSrc = (Hour) => {
+    setSrc = (diffTime) => {
         this.setState({
-            mainDate: moment().subtract(-5+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            nextDate: moment().subtract(-6+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            prevDate: moment().subtract(-4+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
-            thumbnail: this.getDOP(moment().subtract(-5+Hour+moment().utcOffset()/60,'hours').startOf('hour')),
-            mainHour: Hour
+            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            thumbnail: this.getDOP(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
+            diffTime: diffTime
         });
     }
 
@@ -77,13 +78,8 @@ class App extends React.Component {
                             selected={this.state.mainDate}
                             onChange={this.handleChange}
                             utcOffset={8}
-                            showTimeSelect
-                            dateFormat="YYYY-MMM-DD HH:mm UTC+8"
-                            timeFormat="HH:mm"
-                            timeIntervals={60}
-                            timeCaption="UTC+8"
-                            mode="time"
-                            minDate={moment("2017-01-01T00:00:00+0800")}
+                            dateFormat="YYYY-MMM-DD UTC+8"
+                            minDate={moment("2017-01-01")}
                             maxDate={moment().add(1, 'hours')}
                         />
                         <a href='#' onClick={this.toggleLightbox}>
@@ -98,6 +94,7 @@ class App extends React.Component {
                                   onMovePrevRequest={this.gotoPrevious}
                                   onMoveNextRequest={this.gotoNext}
                                   imagePadding={70}
+                                  animationDisabled={true}
                               />
                         )}
                     </div>

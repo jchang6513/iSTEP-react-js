@@ -99,6 +99,7 @@ class App extends React.Component {
                                   onMovePrevRequest={this.gotoPrevious}
                                   onMoveNextRequest={this.gotoNext}
                                   imagePadding={70}
+                                  animationDisabled={true}
                               />
                         )}
                     </div>

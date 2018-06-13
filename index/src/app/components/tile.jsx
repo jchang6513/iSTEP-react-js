@@ -76,6 +76,7 @@ export class Tile extends React.Component {
                         onMoveNextRequest={this.gotoNext}
                         imagePadding={this.props.imagePadding}
                         imageCaption={this.props.imageCaption}
+                        animationDisabled={true}
                     />
               )}
           </div>
