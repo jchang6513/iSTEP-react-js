@@ -61,8 +61,8 @@ class App extends React.Component {
     setSrc = (diffTime) => {
         this.setState({
             mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            nextDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            prevDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
             thumbnail: this.getDOP(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
             diffTime: diffTime
         });

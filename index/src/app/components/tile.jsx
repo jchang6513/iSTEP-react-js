@@ -55,8 +55,8 @@ export class Tile extends React.Component {
     setSrc = (diffTime) => {
         this.setState({
             mainSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
-            nextSrc: moment().subtract(this.props.delay-1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
-            prevSrc: moment().subtract(this.props.delay+1+moment().utcOffset()/60,'hours').subtract(diffTime,this.props.diffType).startOf('hour'),
+            nextSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime-1,this.props.diffType).startOf('hour'),
+            prevSrc: moment().subtract(this.props.delay+moment().utcOffset()/60,'hours').subtract(diffTime+1,this.props.diffType).startOf('hour'),
             diffTime: diffTime
         });
     }

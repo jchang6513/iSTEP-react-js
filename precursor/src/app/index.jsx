@@ -16,7 +16,7 @@ class App extends React.Component {
     constructor () {
         super();
         this.state = {
-            beginDate: moment("2017010100", "YYYYMMDDHH"),
+            beginDate: moment("2018010100", "YYYYMMDDHH"),
             currentDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
             mainDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
             nextDate: moment().subtract(4+moment().utcOffset()/60,'hours').startOf('hour'),

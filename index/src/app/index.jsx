@@ -79,7 +79,7 @@ class App extends React.Component {
                         diffType={'hours'}
                         getURL={this.getPRE}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/pre.html'>http://www2.ss.ncu.edu.tw/~istep/pre.html</a></p>}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/pre.html'>http://www2.ss.ncu.edu.tw/~istep/pre.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide2}
@@ -88,7 +88,7 @@ class App extends React.Component {
                         diffType={'hours'}
                         getURL={this.getTWRG}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/tgim.html'>http://www2.ss.ncu.edu.tw/~istep/tgim.html</a></p>}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/tgim.html'>http://www2.ss.ncu.edu.tw/~istep/tgim.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide3}
@@ -97,7 +97,7 @@ class App extends React.Component {
                         diffType={'hours'}
                         getURL={this.getTWRR}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/trim.html'>http://www2.ss.ncu.edu.tw/~istep/trim.html</a></p>}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/trim.html'>http://www2.ss.ncu.edu.tw/~istep/trim.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide4}
@@ -106,7 +106,7 @@ class App extends React.Component {
                         diffType={'days'}
                         getURL={this.getDOP}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/dop.html'>http://www2.ss.ncu.edu.tw/~istep/dop.html</a></p>}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/dop.html'>http://www2.ss.ncu.edu.tw/~istep/dop.html</a></p>}
                     />
                     <Tile
                         img={this.state.Slide5}
@@ -115,7 +115,7 @@ class App extends React.Component {
                         diffType={'days'}
                         getURL={this.getMAG}
                         imagePadding={70}
-                        imageCaption={<p>For more detail, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/qf.html'>http://www2.ss.ncu.edu.tw/~istep/qf.html</a></p>}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/mag.html'>http://www2.ss.ncu.edu.tw/~istep/mag.html</a></p>}
                     />
                     <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
                         <a href="http://www2.ss.ncu.edu.tw/~istep/inf.html">

@@ -61,8 +61,8 @@ class App extends React.Component {
     setSrc = (diffTime) => {
         this.setState({
             mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            nextDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime-1,'days').startOf('hour'),
+            prevDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime+1,'days').startOf('hour'),
             thumbnail: this.getDOP(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
             diffTime: diffTime
         });
@@ -80,7 +80,7 @@ class App extends React.Component {
                             utcOffset={8}
                             dateFormat="YYYY-MMM-DD UTC+8"
                             minDate={moment("2017-01-01")}
-                            maxDate={moment().add(1, 'hours')}
+                            maxDate={moment().subtract(3,'hours')}
                         />
                         <a href='#' onClick={this.toggleLightbox}>
                             <img className="w-100" src={this.state.thumbnail} alt=""/>
@@ -99,7 +99,7 @@ class App extends React.Component {
                         )}
                     </div>
                     <div className="col-lg-5 col-md-12 text-center d-flex align-items-end pt-4">
-                        <img className="w-100" src="http://www.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
+                        <img className="w-100" src="http://www2.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
                     </div>
                 </div>
             </div>
