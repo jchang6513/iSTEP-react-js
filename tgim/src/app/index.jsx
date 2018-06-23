@@ -24,22 +24,22 @@ class App extends React.Component {
         };
         this.handleChangeStart = this.handleChangeStart.bind(this);
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
-        this.getURL = this.getURL.bind(this);        
+        this.getURL = this.getURL.bind(this);
         this.getImg = this.getImg.bind(this);
         this.change = this.change.bind(this);
         setInterval(()=>{
             this.setState({
                 iurl: (this.state.iurl+1) % this.state.urls.length
             })
-        },500) 
+        },500)
     }
-    
+
     handleChangeStart(date) {
         if (date.isAfter(this.state.endDate)) {
             date = this.state.endDate
-        }        
+        }
         this.setState({
-            startDate: date,            
+            startDate: date,
         });
         this.getImg(date,this.state.endDate,this.state.frames)
     }
@@ -49,30 +49,30 @@ class App extends React.Component {
             date = this.state.startDate
         }
         this.setState({
-            endDate: date,            
+            endDate: date,
         });
         this.getImg(this.state.startDate,date,this.state.frames)
-    }    
-    
+    }
+
     change(event) {
         this.setState({
             frames: event.target.value
         });
         this.getImg(this.state.startDate,this.state.endDate,event.target.value)
-    }    
+    }
 
     getURL(date) {
         var start = new Date(date._d.getFullYear(), 0, 0);
         var diff = (date._d-start)+((start.getTimezoneOffset()-date._d.getTimezoneOffset())*60000);
         var doy = Math.floor(diff/86400000);
-        
-        var url='http://irsl.ss.ncu.edu.tw/media/TWRG/';
+
+        var url='http://irsl.ss.ncu.edu.tw/media/product/TWRG/';
         url += date._d.getFullYear().toString()+'.'+doy.pad(3)+'/'
         url += 'TWRG'+doy.pad(3)+String.fromCharCode(65+date._d.getHours())+'.'+date._d.getFullYear().toString().substr(2)+'I.'+date._d.getMinutes().pad(2)+'.png';
         console.log(date._d.getHours())
-        return url    
+        return url
     }
-    
+
     getImg(date,edate,frames) {
         var Images = [];
         var date = moment(date)
@@ -80,19 +80,19 @@ class App extends React.Component {
             while(edate.isAfter(date)) {
                 Images.push(this.getURL(date))
                 date.add(1,'hour');
-            }    
+            }
         } else {
             Images.push(this.getURL(date))
         }
-        
+
         this.setState({
             urls: Images,
             iurl: 0
         })
 //        console.log(Images)
     }
-    
-    render () {        
+
+    render () {
         return (
             <div className='container'>
                 <div className='row'>
@@ -110,8 +110,8 @@ class App extends React.Component {
                             selectsStart
                             startDate={this.state.startDate}
                             endDate={this.state.endDate}
-                            onChange={this.handleChangeStart}         
-                            showTimeSelect                            
+                            onChange={this.handleChangeStart}
+                            showTimeSelect
                             dateFormat="YYYY-MM-DD HH:mm UT"
                             timeFormat="HH:mm"
                             timeIntervals={60}
@@ -119,7 +119,7 @@ class App extends React.Component {
                             mode="time"
                             minDate={moment("2017-07-27T00:00:00+0800")}
                             maxDate={moment().add(1, 'hours')}
-                        />  
+                        />
                         <h4>TO:</h4>
                         <DatePicker
                             customInput={<DatePickerCustom />}
@@ -127,8 +127,8 @@ class App extends React.Component {
                             selectsEnd
                             startDate={this.state.startDate}
                             endDate={this.state.endDate}
-                            onChange={this.handleChangeEnd}         
-                            showTimeSelect                            
+                            onChange={this.handleChangeEnd}
+                            showTimeSelect
                             dateFormat="YYYY-MM-DD HH:mm UT"
                             timeFormat="HH:mm"
                             timeIntervals={60}
@@ -136,15 +136,15 @@ class App extends React.Component {
                             mode="time"
                             minDate={moment("2017-07-27T00:00:00+0800")}
                             maxDate={moment().add(1, 'hours')}
-                        />                        
+                        />
                     </div>
                     <div id="tgim-div" className='col-lg-12 col-md-5 col-sm-12 ml-md-3 text-right'>
                         <img id="tgim-img" src={this.state.urls[this.state.iurl]} alt=""></img>
                         <p className="mt-3 mr-4">Updated {this.state.update}</p>
                     </div>
-                </div>                
+                </div>
             </div>
-        )        
+        )
     }
 }
 
