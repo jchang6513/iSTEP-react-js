@@ -8,7 +8,7 @@ var config = {
     entry: SRC_DIR + "/app/index.jsx",
     output: {
         path: DIST_DIR + "/app",
-        filename: "dop.js",
+        filename: "mag.js",
         publicPath: "/app/"
     },
     module: {

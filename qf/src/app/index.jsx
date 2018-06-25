@@ -16,9 +16,9 @@ class App extends React.Component {
     constructor () {
         super();
         this.state = {
-            beginDate: moment("2017010100", "YYYYMMDDHH"),
+            beginDate: moment("2018010100", "YYYYMMDDHH"),
             currentDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
-            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/Doppler/real_dop.png',
+            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/QuakeFinder/real_qf_mag.png',
             mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
             nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').startOf('hour'),
             prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').startOf('hour'),
@@ -49,21 +49,21 @@ class App extends React.Component {
     		this.setSrc(diffTime)
   	}
 
-    getDOP = (date) => {
+    getMAG = (date) => {
         var start = new Date(date._d.getFullYear(), 0, 0);
 
-        var url='http://irsl.ss.ncu.edu.tw/media/product/Doppler/';
+        var url='http://irsl.ss.ncu.edu.tw/media/product/QuakeFinder/';
         url += date.format('YYYY/MM/')
-        url += 'DOP'+date.format('YYYYMMDD')+'.png';
+        url += 'QFMAG'+date.format('YYYYMMDD')+'.png';
         return url;
     }
 
     setSrc = (diffTime) => {
         this.setState({
             mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            nextDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            prevDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            thumbnail: this.getDOP(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
+            nextDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime-1,'days').startOf('hour'),
+            prevDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime+1,'days').startOf('hour'),
+            thumbnail: this.getMAG(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
             diffTime: diffTime
         });
     }
@@ -80,26 +80,27 @@ class App extends React.Component {
                             utcOffset={8}
                             dateFormat="YYYY-MMM-DD UTC+8"
                             minDate={moment("2017-01-01")}
-                            maxDate={moment().add(1, 'hours')}
+                            maxDate={moment().subtract(3,'hours')}
                         />
                         <a href='#' onClick={this.toggleLightbox}>
                             <img className="w-100" src={this.state.thumbnail} alt=""/>
                         </a>
                         {this.state.isOpen && (
                               <Lightbox
-                                  mainSrc={this.getDOP(this.state.mainDate)}
-                                  nextSrc={this.getDOP(this.state.nextDate)}
-                                  prevSrc={this.getDOP(this.state.prevDate)}
+                                  mainSrc={this.getMAG(this.state.mainDate)}
+                                  nextSrc={this.getMAG(this.state.nextDate)}
+                                  prevSrc={this.getMAG(this.state.prevDate)}
                                   onCloseRequest={() => this.setState({ isOpen: false })}
                                   onMovePrevRequest={this.gotoPrevious}
                                   onMoveNextRequest={this.gotoNext}
-                                  imagePadding={70}
                                   animationDisabled={true}
+                                  imagePadding={70}
+                                  imageTitle={this.state.mainDate.format("dddd, MMM DD YYYY")}
                               />
                         )}
                     </div>
                     <div className="col-lg-5 col-md-12 text-center d-flex align-items-end pt-4">
-                        <img className="w-100" src="http://www.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
+                        <img className="w-100" src="http://www2.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
                     </div>
                 </div>
             </div>

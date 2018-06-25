@@ -18,6 +18,7 @@ class App extends React.Component {
         this.state = {
             beginDate: moment("2018010100", "YYYYMMDDHH"),
             currentDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
+            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/Precursor/real_sio.png',
             mainDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
             nextDate: moment().subtract(4+moment().utcOffset()/60,'hours').startOf('hour'),
             prevDate: moment().subtract(6+moment().utcOffset()/60,'hours').startOf('hour'),
@@ -96,10 +97,11 @@ class App extends React.Component {
                                   nextSrc={this.getPRE(this.state.nextDate)}
                                   prevSrc={this.getPRE(this.state.prevDate)}
                                   onCloseRequest={() => this.setState({ isOpen: false })}
+                                  animationDisabled={true}
                                   onMovePrevRequest={this.gotoPrevious}
                                   onMoveNextRequest={this.gotoNext}
                                   imagePadding={70}
-                                  animationDisabled={true}
+                                  imageTitle={this.state.mainDate.format("dddd, MMM-DD-YYYY, HH:00 a")}
                               />
                         )}
                     </div>

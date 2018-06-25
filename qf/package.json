@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && copy src\\dop.html dist\\dop.html && webpack-dev-server --content-base src/ --inline --hot",
+    "build": "webpack -d && copy src\\mag.html dist\\mag.html && webpack-dev-server --content-base src/ --inline --hot",
     "build:prod": "webpack -p && cp src\\dop.html dist\\dop.html"
   },
   "author": "Yi-Wei Chang",
