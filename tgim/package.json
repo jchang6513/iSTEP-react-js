@@ -16,7 +16,8 @@
     "react": "^16.2.0",
     "react-datepicker": "^1.4.1",
     "react-dom": "^16.2.0",
-    "react-dropdown-input": "^0.1.11"
+    "react-dropdown-input": "^0.1.11",
+    "react-image-lightbox": "^5.0.0"
   },
   "devDependencies": {
     "babel-loader": "^7.1.4",

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import Lightbox from 'react-image-lightbox';
 
 Number.prototype.pad = function(size) {
   var s = String(this);
@@ -15,53 +16,39 @@ class App extends React.Component {
     constructor () {
         super();
         this.state = {
-            startDate: moment().subtract(7+moment().utcOffset()/60,'hours').startOf('hour'),
-            endDate: moment().subtract(6+moment().utcOffset()/60,'hours').startOf('hour'),
-            urls: [this.getURL(moment().subtract(7+moment().utcOffset()/60,'hours').startOf('hour'))],
-            iurl: 0,
-            frames: 'Single',
-            update: moment().subtract(3,'hours').startOf('hour').toISOString().replace('T',' ').substr(0,16)
+            beginDate: moment("2018010100", "YYYYMMDDHH"),
+            currentDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
+            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/Precursor/real_sio.png',
+            mainDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
+            nextDate: moment().subtract(4+moment().utcOffset()/60,'hours').startOf('hour'),
+            prevDate: moment().subtract(6+moment().utcOffset()/60,'hours').startOf('hour'),
+            mainHour: 0,
+            isOpen: false,
         };
-        this.handleChangeStart = this.handleChangeStart.bind(this);
-        this.handleChangeEnd = this.handleChangeEnd.bind(this);
-        this.getURL = this.getURL.bind(this);
-        this.getImg = this.getImg.bind(this);
-        this.change = this.change.bind(this);
-        setInterval(()=>{
-            this.setState({
-                iurl: (this.state.iurl+1) % this.state.urls.length
-            })
-        },500)
     }
 
-    handleChangeStart(date) {
-        if (date.isAfter(this.state.endDate)) {
-            date = this.state.endDate
-        }
-        this.setState({
-            startDate: date,
-        });
-        this.getImg(date,this.state.endDate,this.state.frames)
+    toggleLightbox = () => {
+    		this.setState({
+            isOpen: !this.state.isOpen,
+    		});
+  	}
+
+    handleChange = (date) => {
+        const Hour = this.state.currentDate.diff(date,'hours')
+        this.setSrc(Hour)
     }
 
-    handleChangeEnd(date) {
-        if (date.isBefore(this.state.startDate)) {
-            date = this.state.startDate
-        }
-        this.setState({
-            endDate: date,
-        });
-        this.getImg(this.state.startDate,date,this.state.frames)
-    }
+    gotoPrevious = () => {
+        const Hour = (this.state.prevDate.isBefore(this.state.beginDate)) ? 0 : this.state.mainHour+1
+    		this.setSrc(Hour)
+  	}
 
-    change(event) {
-        this.setState({
-            frames: event.target.value
-        });
-        this.getImg(this.state.startDate,this.state.endDate,event.target.value)
-    }
+  	gotoNext = () => {
+        const Hour = (this.state.nextDate.isAfter(this.state.currentDate)) ? this.state.currentDate.diff(this.state.beginDate,'hours') : this.state.mainHour-1
+    		this.setSrc(Hour)
+  	}
 
-    getURL(date) {
+    getTWRG = (date) => {
         var start = new Date(date._d.getFullYear(), 0, 0);
         var diff = (date._d-start)+((start.getTimezoneOffset()-date._d.getTimezoneOffset())*60000);
         var doy = Math.floor(diff/86400000);
@@ -69,78 +56,56 @@ class App extends React.Component {
         var url='http://irsl.ss.ncu.edu.tw/media/product/TWRG/';
         url += date._d.getFullYear().toString()+'.'+doy.pad(3)+'/'
         url += 'TWRG'+doy.pad(3)+String.fromCharCode(65+date._d.getHours())+'.'+date._d.getFullYear().toString().substr(2)+'I.'+date._d.getMinutes().pad(2)+'.png';
-        console.log(date._d.getHours())
-        return url
+        return url;
     }
 
-    getImg(date,edate,frames) {
-        var Images = [];
-        var date = moment(date)
-        if (frames=='Animate') {
-            while(edate.isAfter(date)) {
-                Images.push(this.getURL(date))
-                date.add(1,'hour');
-            }
-        } else {
-            Images.push(this.getURL(date))
-        }
-
+    setSrc = (Hour) => {
         this.setState({
-            urls: Images,
-            iurl: 0
-        })
-//        console.log(Images)
+            mainDate: moment().subtract(5+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
+            nextDate: moment().subtract(5-1+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
+            prevDate: moment().subtract(5+1+Hour+moment().utcOffset()/60,'hours').startOf('hour'),
+            thumbnail: this.getTWRG(moment().subtract(5+Hour+moment().utcOffset()/60,'hours').startOf('hour')),
+            mainHour: Hour
+        });
     }
 
     render () {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-lg-7 col-md-6 col-sm-12'>
-                        <select className="form-control ml-3 col-10 mb-4" onChange={this.change} value={this.state.frames}>
-                            <option value='Single'>Single</option>
-                            <option value='Animate'>Animate</option>
-                        </select>
-                    </div>
-                    <div className='col-lg-4 col-md-6 col-sm-12 mb-4 ml-4'>
-                        <h4>FROM:</h4>
+                    <div className="col-lg-4 col-md-12 ml-auto mr-auto mt-1 text-right">
                         <DatePicker
                             customInput={<DatePickerCustom />}
-                            selected={this.state.startDate}
-                            selectsStart
-                            startDate={this.state.startDate}
-                            endDate={this.state.endDate}
-                            onChange={this.handleChangeStart}
+                            selected={this.state.mainDate}
+                            onChange={this.handleChange}
+                            utcOffset={8}
                             showTimeSelect
-                            dateFormat="YYYY-MM-DD HH:mm UT"
+                            dateFormat="YYYY-MMM-DD HH:mm UT"
                             timeFormat="HH:mm"
                             timeIntervals={60}
-                            timeCaption="UT"
+                            timeCaption="UTC+8"
                             mode="time"
-                            minDate={moment("2017-07-27T00:00:00+0800")}
-                            maxDate={moment().add(1, 'hours')}
-                        />
-                        <h4>TO:</h4>
-                        <DatePicker
-                            customInput={<DatePickerCustom />}
-                            selected={this.state.endDate}
-                            selectsEnd
-                            startDate={this.state.startDate}
-                            endDate={this.state.endDate}
-                            onChange={this.handleChangeEnd}
-                            showTimeSelect
-                            dateFormat="YYYY-MM-DD HH:mm UT"
-                            timeFormat="HH:mm"
-                            timeIntervals={60}
-                            timeCaption="UT"
-                            mode="time"
-                            minDate={moment("2017-07-27T00:00:00+0800")}
+                            minDate={moment("2018-01-01T00:00:00+0800")}
                             maxDate={moment().add(1, 'hours')}
                         />
                     </div>
-                    <div id="tgim-div" className='col-lg-12 col-md-5 col-sm-12 ml-md-3 text-right'>
-                        <img id="tgim-img" src={this.state.urls[this.state.iurl]} alt=""></img>
-                        <p className="mt-3 mr-4">Updated {this.state.update}</p>
+                    <div className="col-lg-8 col-md-12 ml-auto mr-auto mt-1 text-lg-right">
+                        <a href='#' onClick={this.toggleLightbox}>
+                            <img className="w-100" src={this.getTWRG(this.state.mainDate)} alt=""/>
+                        </a>
+                        {this.state.isOpen && (
+                              <Lightbox
+                                  mainSrc={this.getTWRG(this.state.mainDate)}
+                                  nextSrc={this.getTWRG(this.state.nextDate)}
+                                  prevSrc={this.getTWRG(this.state.prevDate)}
+                                  onCloseRequest={() => this.setState({ isOpen: false })}
+                                  animationDisabled={true}
+                                  onMovePrevRequest={this.gotoPrevious}
+                                  onMoveNextRequest={this.gotoNext}
+                                  imagePadding={70}
+                                  imageTitle={this.state.mainDate.format("dddd, MMM-DD-YYYY, HH:00 a")}
+                              />
+                        )}
                     </div>
                 </div>
             </div>
@@ -151,8 +116,8 @@ class App extends React.Component {
 class DatePickerCustom extends React.Component {
   render () {
     return (
-      <button className="btn btn-outline-primary btn-md mb-2" onClick={this.props.onClick}>
-        {this.props.value}
+      <button className="btn btn-outline-primary btn-md bt-sm-sm mr-lg-0 mb-lg-0 mr-4 mb-4 " onClick={this.props.onClick}>
+          {this.props.value}
       </button>
     )
   }
@@ -162,5 +127,4 @@ DatePickerCustom.propTypes = {
   value: PropTypes.string
 };
 
-window.moment = moment;
 render(<App/>,window.document.getElementById('app'));
