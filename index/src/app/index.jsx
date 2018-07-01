@@ -68,6 +68,15 @@ class App extends React.Component {
         return url;
     }
 
+    getINF = (date) => {
+        var start = new Date(date._d.getFullYear(), 0, 0);
+
+        var url='http://irsl.ss.ncu.edu.tw/media/product/Infrasound/';
+        url += date.format('YYYY/MM/')
+        url += 'INF'+date.format('YYYYMMDD')+'.png';
+        return url;
+    }
+
     render () {
         return (
             <div className="container-fluid">
@@ -117,11 +126,15 @@ class App extends React.Component {
                         imagePadding={70}
                         imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/mag.html'>http://www2.ss.ncu.edu.tw/~istep/mag.html</a></p>}
                     />
-                    <div className="col-lg-2 col-md-4 col-6 p-0 m-0">
-                        <a href="http://www2.ss.ncu.edu.tw/~istep/inf.html">
-                            <img className="d-block" src={this.state.Slide6}/>
-                        </a>
-                    </div>
+                    <Tile
+                        img={this.state.Slide6}
+                        beginDate={moment("20180101", "YYYYMMDD")}
+                        delay={-4.5}
+                        diffType={'days'}
+                        getURL={this.getINF}
+                        imagePadding={70}
+                        imageCaption={<p>For more details, please visit <a href='http://www2.ss.ncu.edu.tw/~istep/inf.html'>http://www2.ss.ncu.edu.tw/~istep/inf.html</a></p>}
+                    />
                 </div>
             </div>
         )
