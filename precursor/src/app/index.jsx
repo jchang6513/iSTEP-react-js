@@ -89,7 +89,7 @@ class App extends React.Component {
                             maxDate={moment().add(1, 'hours')}
                         />
                         <a href='#' onClick={this.toggleLightbox}>
-                            <img className="w-100" src={this.getPRE(this.state.mainDate)} alt=""/>
+                            <img className="w-100" src={this.state.thumbnail} alt=""/>
                         </a>
                         {this.state.isOpen && (
                               <Lightbox

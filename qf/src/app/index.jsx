@@ -17,11 +17,11 @@ class App extends React.Component {
         super();
         this.state = {
             beginDate: moment("2018010100", "YYYYMMDDHH"),
-            currentDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
+            currentDate: moment().subtract(40+moment().utcOffset()/60,'hours').startOf('hour'),
             thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/QuakeFinder/real_qf_mag.png',
-            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').startOf('hour'),
-            nextDate: moment().subtract(-6+moment().utcOffset()/60,'hours').startOf('hour'),
-            prevDate: moment().subtract(-4+moment().utcOffset()/60,'hours').startOf('hour'),
+            mainDate: moment().subtract(40+moment().utcOffset()/60,'hours').startOf('hour'),
+            nextDate: moment().subtract(40+moment().utcOffset()/60,'hours').startOf('hour'),
+            prevDate: moment().subtract(40+moment().utcOffset()/60,'hours').startOf('hour'),
             diffTime: 0,
             isOpen: false,
 
@@ -60,10 +60,10 @@ class App extends React.Component {
 
     setSrc = (diffTime) => {
         this.setState({
-            mainDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
-            nextDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime-1,'days').startOf('hour'),
-            prevDate: moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime+1,'days').startOf('hour'),
-            thumbnail: this.getMAG(moment().subtract(-5+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
+            mainDate: moment().subtract(40+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour'),
+            nextDate: moment().subtract(40+moment().utcOffset()/60,'hours').subtract(diffTime-1,'days').startOf('hour'),
+            prevDate: moment().subtract(40+moment().utcOffset()/60,'hours').subtract(diffTime+1,'days').startOf('hour'),
+            thumbnail: this.getMAG(moment().subtract(40+moment().utcOffset()/60,'hours').subtract(diffTime,'days').startOf('hour')),
             diffTime: diffTime
         });
     }
@@ -100,7 +100,7 @@ class App extends React.Component {
                         )}
                     </div>
                     <div className="col-lg-5 col-md-12 text-center d-flex align-items-end pt-4">
-                        <img className="w-100" src="http://www2.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
+                        <img className="w-100" src="http://www.ss.ncu.edu.tw/~istep/images/qf_loc.png" alt=""/>
                     </div>
                 </div>
             </div>

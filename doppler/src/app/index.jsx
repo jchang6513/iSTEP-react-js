@@ -99,7 +99,7 @@ class App extends React.Component {
                         )}
                     </div>
                     <div className="col-lg-5 col-md-12 text-center d-flex align-items-end pt-4">
-                        <img className="w-100" src="http://www2.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
+                        <img className="w-100" src="http://www.ss.ncu.edu.tw/~istep/images/Doppler_loc.png" alt=""/>
                     </div>
                 </div>
             </div>

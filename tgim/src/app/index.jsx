@@ -18,7 +18,7 @@ class App extends React.Component {
         this.state = {
             beginDate: moment("2018010100", "YYYYMMDDHH"),
             currentDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
-            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/Precursor/real_sio.png',
+            thumbnail: 'http://irsl.ss.ncu.edu.tw/media/product/TWRG/real_twrg.png',
             mainDate: moment().subtract(5+moment().utcOffset()/60,'hours').startOf('hour'),
             nextDate: moment().subtract(4+moment().utcOffset()/60,'hours').startOf('hour'),
             prevDate: moment().subtract(6+moment().utcOffset()/60,'hours').startOf('hour'),
@@ -73,7 +73,7 @@ class App extends React.Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className="col-lg-4 col-md-12 ml-auto mr-auto mt-1 text-right">
+                    <div className="col-12 ml-auto mr-auto mt-1">
                         <DatePicker
                             customInput={<DatePickerCustom />}
                             selected={this.state.mainDate}
@@ -88,10 +88,8 @@ class App extends React.Component {
                             minDate={moment("2018-01-01T00:00:00+0800")}
                             maxDate={moment().add(1, 'hours')}
                         />
-                    </div>
-                    <div className="col-lg-8 col-md-12 ml-auto mr-auto mt-1 text-lg-right">
                         <a href='#' onClick={this.toggleLightbox}>
-                            <img className="w-100" src={this.getTWRG(this.state.mainDate)} alt=""/>
+                            <img className="w-100" src={this.state.thumbnail} alt=""/>
                         </a>
                         {this.state.isOpen && (
                               <Lightbox

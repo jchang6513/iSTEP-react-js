@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build",
     "build": "webpack -d && copy src\\mag.html dist\\mag.html && webpack-dev-server --content-base src/ --inline --hot",
-    "build:prod": "webpack -p && cp src\\dop.html dist\\dop.html"
+    "build:prod": "webpack -p && cp src\\mag.html dist\\mag.html"
   },
   "author": "Yi-Wei Chang",
   "license": "MIT",

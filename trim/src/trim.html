@@ -1,31 +1,40 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121092402-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-121092402-1');
+	</script>
         <meta charset="UTF-8">
-        <title> Integrated Study and Test for Earthquake Precursors - 地震前兆計畫 - iSTEP </title>
+        <title> Taiwan Regional Inosphere Maps - iSTEP </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="iSTEP4-TRIM"/>
+        <meta property="og:title" content="TRIM - iSTEP"/>
         <meta property="og:image" content="http://www.ss.ncu.edu.tw/~istep/images/istep_h_b.png"/>
-        <meta property="og:description" content="Integrated Study and Test for Earthquake Precursors"/>    
+        <meta property="og:description" content="Integrated Study and Test for Earthquake Precursors"/>
         <meta name="Description" content="Taiwan Regional Ionosphere Maps" />
         <meta property="og:description" content="台灣區域電離層圖"/>
         <meta property="og:url" content="http://www.ss.ncu.edu.tw/~istep"/>
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="iSTEP-TRIM" />    
+        <meta property="og:site_name" content="iSTEP-TRIM" />
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/hamburgers.css">
         <link rel="stylesheet" type="text/css" href="css/animation.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" typr="text/css" href="css/react-datepicker.css">
-        
+
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" ></script>
-        <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>          
-        <style>        
+        <script src="js/jquery.waypoints.min.js" type="text/javascript"></script>
+        <style>
             #trim-div {
                 min-height: 75vh;
                 width: auto;
@@ -53,16 +62,16 @@
                             Real-Time
                         </a>
                         <ul class="dropdown-menu bg-inverse" aria-labelledby="navbarDropdown">
-                            <li class="nav-item"><a class="nav-link" href="pre.html">Precursor </a></li>
-                            <li class="nav-item"><a class="nav-link" href="tgim.html">TGIM</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="trim.html">TRIM </a></li>
-                            <li class="nav-item"><a class="nav-link" href="dop.html">Doppler </a></li>
-                            <li class="nav-item"><a class="nav-link" href="qf.html">QuakeFinder </a></li>
-                            <li class="nav-item"><a class="nav-link" href="inf.html">Infrasound </a></li>
+                          <li class="nav-item"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/pre.html">Precursor </a></li>
+                          <li class="nav-item"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/tgim.html">TGIM </a></li>
+                          <li class="nav-item active"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/trim.html">TRIM </a></li>
+                          <li class="nav-item"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/dop.html">Doppler </a></li>
+                          <li class="nav-item"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/mag.html">Magnetometer </a></li>
+                          <li class="nav-item"><a class="nav-link" href="http://www.ss.ncu.edu.tw/~istep/inf.html">Infrasound </a></li>
                         </ul>
-                    </li>                    
+                    </li>
                 </ul>
-            </div>                
+            </div>
         </div>
 
         <div class="main-content">
@@ -71,11 +80,11 @@
                     <div class="hamburger-inner"></div>
                 </div>
             </button>
-            
-            <div id="header" class="jumbotron">                
+
+            <div id="header" class="jumbotron">
                 <h1 id="title">TRIM</h1>
             </div>
-                        
+
             <div id='app'></div>
             <script src='app/trim.js'></script>
 
